@@ -1,0 +1,24 @@
+#include "keeby_left.overlay"
+
+&default_transform {
+    col-offset = <6>;
+};
+
+&left_encoder {
+    status = "disabled";
+};
+
+&sensors {
+    sensors = <&right_encoder>;
+};
+
+/ {
+    right_encoder: encoder_right {
+        compatible = "alps,ec11";
+        label = "RIGHT_ENCODER";
+        a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        b-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
+        steps = <80>;
+        status = "okay";
+    };
+};

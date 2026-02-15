@@ -1,0 +1,132 @@
+#include <dt-bindings/zmk/matrix_transform.h>
+#include <dt-bindings/led/led.h>
+
+/ {
+    chosen {
+        zmk,kscan = &kscan0;
+        zmk,matrix_transform = &default_transform;
+        zmk,underglow = &led_strip;
+        zmk,battery = &vbatt;
+    };
+
+    default_transform: keymap_transform_0 {
+        compatible = "zmk,matrix-transform";
+        columns = <6>;
+        rows = <6>; // 5 Matrix Rows + 1 Direct Row (Encoder Click)
+        map = <
+            RC(0,0) RC(0,1) RC(0,2) RC(0,3) RC(0,4) RC(0,5)
+            RC(1,0) RC(1,1) RC(1,2) RC(1,3) RC(1,4) RC(1,5)
+            RC(2,0) RC(2,1) RC(2,2) RC(2,3) RC(2,4) RC(2,5)
+            RC(3,0) RC(3,1) RC(3,2) RC(3,3) RC(3,4) RC(3,5)
+            RC(4,0) RC(4,1) RC(4,2) RC(4,3) RC(4,4)         // Thumb Cluster
+            RC(5,0)                                         // Encoder Click
+        >;
+    };
+
+    // COMPOSITE KSCAN: Combines Matrix + Direct Pin
+    kscan0: kscan_composite {
+        compatible = "zmk,kscan-composite";
+        label = "KSCAN";
+        rows = <6>;
+        columns = <6>;
+
+        // Part 1: The Main Matrix
+        matrix {
+            kscan = <&kscan_matrix>;
+        };
+
+        // Part 2: The Encoder Switch (treated as Row 5)
+        direct {
+            kscan = <&kscan_direct>;
+            row-offset = <5>; // Starts after the 5 matrix rows (0-4)
+        };
+    };
+
+    kscan_matrix: kscan_matrix {
+        compatible = "zmk,kscan-gpio-matrix";
+        diode-direction = "col2row"; // Confirmed from schematic (Col -> SW -> Diode -> Row)
+
+        // P0.10, P1.11, P1.13, P1.15, P0.02, P0.29
+        col-gpios
+            = <&gpio0 10 GPIO_ACTIVE_HIGH> // COL1
+            , <&gpio1 11 GPIO_ACTIVE_HIGH> // COL2
+            , <&gpio1 13 GPIO_ACTIVE_HIGH> // COL3
+            , <&gpio1 15 GPIO_ACTIVE_HIGH> // COL4
+            , <&gpio0 2  GPIO_ACTIVE_HIGH> // COL5
+            , <&gpio0 29 GPIO_ACTIVE_HIGH> // COL6
+            ;
+
+        // P1.00, P0.11, P1.04, P1.06, P0.09
+        row-gpios
+            = <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW1
+            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW2
+            , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW3
+            , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW4
+            , <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW5
+            ;
+    };
+
+    kscan_direct: kscan_direct {
+        compatible = "zmk,kscan-gpio-direct";
+        input-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // R_E_S (Encoder Switch)
+    };
+
+    // ROTARY ENCODER
+    left_encoder: encoder_left {
+        compatible = "alps,ec11";
+        label = "LEFT_ENCODER";
+        a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_1
+        b-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_2
+        steps = <80>;
+        status = "disabled";
+    };
+
+    sensors: sensors {
+        compatible = "zmk,keymap-sensors";
+        sensors = <&left_encoder>;
+        triggers-per-rotation = <20>;
+    };
+
+    // BATTERY SENSING (SuperMini/NiceNano specific)
+    vbatt: vbatt {
+        compatible = "zmk,battery-nrf-vddh";
+        label = "VBATT";
+    };
+};
+
+// ENABLE ENCODER
+&left_encoder {
+    status = "okay";
+};
+
+// RGB LEDS
+&pinctrl {
+    spi3_default: spi3_default {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>; // LED_DAT is P0.06
+        };
+    };
+    spi3_sleep: spi3_sleep {
+        group1 {
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+            low-power-enable;
+        };
+    };
+};
+
+&spi3 {
+    compatible = "nordic,nrf-spim";
+    status = "okay";
+    pinctrl-0 = <&spi3_default>;
+    pinctrl-1 = <&spi3_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    led_strip: ws2812@0 {
+        compatible = "worldsemi,ws2812-spi";
+        reg = <0>;
+        spi-max-frequency = <4000000>;
+        chain-length = <29>; // Adjust this count if you have more/less LEDs
+        spi-one-frame = <0x70>;
+        start-spi-fifo-based;
+    };
+};

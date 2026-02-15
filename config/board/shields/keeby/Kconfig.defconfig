@@ -1,0 +1,9 @@
+if SHIELD_KEEBY_LEFT || SHIELD_KEEBY_RIGHT
+
+config ZMK_KEYBOARD_NAME
+    default "Keeby"
+
+config ZMK_SPLIT
+    default y
+
+endif
