@@ -8,10 +8,10 @@ config ZMK_SPLIT
 
 endif
 
-# Set the Left side as the Peripheral
-if SHIELD_KEEBY_LEFT
+# Explicitly set the Right side as the Central (Main) unit
+if SHIELD_KEEBY_RIGHT
 
-config ZMK_SPLIT_BLE_ROLE_PERIPHERAL
+config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
