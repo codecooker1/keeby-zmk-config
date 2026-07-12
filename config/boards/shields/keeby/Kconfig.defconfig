@@ -1,17 +1,9 @@
-if SHIELD_KEEBY_LEFT || SHIELD_KEEBY_RIGHT
-
-config ZMK_KEYBOARD_NAME
-    default "Keeby"
-
-config ZMK_SPLIT
-    default y
-
-endif
-
-# Explicitly set the Right side as the Central (Main) unit
 if SHIELD_KEEBY_RIGHT
 
-config ZMK_SPLIT_ROLE_CENTRAL
-    default y
+config ZMK_KEYBOARD_NAME
+    default "Keeby_Right"
+
+config ZMK_SPLIT
+    default n
 
 endif
