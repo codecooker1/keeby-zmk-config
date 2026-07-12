@@ -7,3 +7,11 @@ config ZMK_SPLIT
     default y
 
 endif
+
+# Set the Left side as the Peripheral
+if SHIELD_KEEBY_LEFT
+
+config ZMK_SPLIT_BLE_ROLE_PERIPHERAL
+    default y
+
+endif
