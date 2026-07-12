@@ -30,53 +30,51 @@
         rows = <6>;
         columns = <6>;
 
-        // Part 1: The Main Matrix
         matrix {
             kscan = <&kscan_matrix>;
         };
 
-        // Part 2: The Encoder Switch (treated as Row 5)
         direct {
             kscan = <&kscan_direct>;
-            row-offset = <5>; // Starts after the 5 matrix rows (0-4)
+            row-offset = <5>; 
         };
     };
 
     kscan_matrix: kscan_matrix {
         compatible = "zmk,kscan-gpio-matrix";
-        diode-direction = "col2row"; // Confirmed from schematic (Col -> SW -> Diode -> Row)
+        diode-direction = "row2col"; // Fixed: Schematic shows Row -> Switch -> Diode -> Column
 
-        // P0.10, P1.11, P1.13, P1.15, P0.02, P0.29
+        // Columns now get the PULL_DOWN flag because of row2col direction
         col-gpios
-            = <&gpio0 10 GPIO_ACTIVE_HIGH> // COL1
-            , <&gpio1 11 GPIO_ACTIVE_HIGH> // COL2
-            , <&gpio1 13 GPIO_ACTIVE_HIGH> // COL3
-            , <&gpio1 15 GPIO_ACTIVE_HIGH> // COL4
-            , <&gpio0 2  GPIO_ACTIVE_HIGH> // COL5
-            , <&gpio0 29 GPIO_ACTIVE_HIGH> // COL6
+            = <&gpio0 29 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL1 (P0.29)
+            , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL2 (P1.04)
+            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL3 (P0.11)
+            , <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL4 (P0.24)
+            , <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL5 (P1.00)
+            , <&gpio0 31 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // COL6 (P0.31)
             ;
 
-        // P1.00, P0.11, P1.04, P1.06, P0.09
+        // Rows are driven high
         row-gpios
-            = <&gpio1 0  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW1
-            , <&gpio0 11 (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW2
-            , <&gpio1 4  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW3
-            , <&gpio1 6  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW4
-            , <&gpio0 9  (GPIO_ACTIVE_HIGH | GPIO_PULL_DOWN)> // ROW5
+            = <&gpio0 6  GPIO_ACTIVE_HIGH> // ROW1 (P0.06)
+            , <&gpio0 22 GPIO_ACTIVE_HIGH> // ROW2 (P0.22)
+            , <&gpio1 6  GPIO_ACTIVE_HIGH> // ROW3 (P1.06)
+            , <&gpio0 10 GPIO_ACTIVE_HIGH> // ROW4 (P0.10)
+            , <&gpio0 9  GPIO_ACTIVE_HIGH> // ROW5 (P0.09)
             ;
     };
 
     kscan_direct: kscan_direct {
         compatible = "zmk,kscan-gpio-direct";
-        input-gpios = <&gpio0 31 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // R_E_S (Encoder Switch)
+        input-gpios = <&gpio1 7 (GPIO_ACTIVE_LOW | GPIO_PULL_UP)>; // R_E_S (P1.07)
     };
 
     // ROTARY ENCODER
     left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
-        a-gpios = <&gpio0 22 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_1
-        b-gpios = <&gpio0 24 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_2
+        a-gpios = <&gpio1 1 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_1 (P1.01)
+        b-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>; // R_E_2 (P1.02)
         steps = <80>;
         status = "disabled";
     };
@@ -87,14 +85,12 @@
         triggers-per-rotation = <20>;
     };
 
-    // BATTERY SENSING (SuperMini/NiceNano specific)
     vbatt: vbatt {
         compatible = "zmk,battery-nrf-vddh";
         label = "VBATT";
     };
 };
 
-// ENABLE ENCODER
 &left_encoder {
     status = "okay";
 };
@@ -103,12 +99,12 @@
 &pinctrl {
     spi3_default: spi3_default {
         group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>; // LED_DAT is P0.06
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 8)>; // Fixed: LED_DAT is P0.08, not P0.06
         };
     };
     spi3_sleep: spi3_sleep {
         group1 {
-            psels = <NRF_PSEL(SPIM_MOSI, 0, 6)>;
+            psels = <NRF_PSEL(SPIM_MOSI, 0, 8)>;
             low-power-enable;
         };
     };
@@ -127,10 +123,8 @@
         spi-max-frequency = <4000000>;
 
         chain-length = <29>;
-
         spi-one-frame = <0x70>;
         spi-zero-frame = <0x40>;
-
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
 };
