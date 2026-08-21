@@ -7,3 +7,12 @@ config ZMK_SPLIT
     default n
 
 endif
+
+config ZMK_KEYBOARD_NAME
+    default "Keeby"
+
+config ZMK_SPLIT
+    default n
+
+config ZMK_USB
+    default y
