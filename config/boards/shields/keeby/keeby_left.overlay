@@ -1,7 +1,7 @@
 #include <dt-bindings/zmk/matrix_transform.h>
 #include <dt-bindings/led/led.h>
 
-&pinctrl {
+/*&pinctrl {
     spi3_default: spi3_default {
         group1 {
             psels = <NRF_PSEL(SPIM_MOSI, 0, 8)>;
@@ -32,7 +32,7 @@
         spi-zero-frame = <0x40>;
         color-mapping = <LED_COLOR_ID_GREEN LED_COLOR_ID_RED LED_COLOR_ID_BLUE>;
     };
-};
+};*/
 
 zephyr_udc0: &usbd {
     status = "okay";
@@ -66,7 +66,7 @@ zephyr_udc0: &usbd {
             , <&gpio1 0  GPIO_ACTIVE_HIGH>;
     };
 
-    left_encoder: encoder_left {
+    /*left_encoder: encoder_left {
         compatible = "alps,ec11";
         label = "LEFT_ENCODER";
         a-gpios = <&gpio1 2 (GPIO_ACTIVE_HIGH | GPIO_PULL_UP)>;
@@ -79,7 +79,7 @@ zephyr_udc0: &usbd {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
         triggers-per-rotation = <20>;
-    };
+    };*/
 
     default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
