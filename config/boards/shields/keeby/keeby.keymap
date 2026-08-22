@@ -20,7 +20,7 @@
 
         layer_1 {
             bindings = <
-                &trans &trans &trans &trans &trans &studio_unlock
+                &trans &trans &trans &trans &trans &trans
                 &trans &trans &trans &trans &trans &trans
                 &trans &trans &trans &trans &trans &trans
                 &trans &trans &trans &trans &mo 1 &trans
