@@ -50,7 +50,6 @@
         zmk,underglow = &led_strip;
     };
 
-    {
     encoder_button_kscan: encoder_button_kscan {
         compatible = "zmk,kscan-gpio-direct";
         wakeup-source;
