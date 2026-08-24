@@ -56,7 +56,7 @@
 &kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5
 &trans    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT
 &trans    &kp EQUAL &kp MINUS &kp PLUS    &kp LBRC  &kp RBRC   &mo RAISE
-                    &trans    &trans      &trans    &trans     &RET
+                    &trans    &trans      &trans    &trans     &kp RET
             >;
 
             sensor-bindings = <&inc_dec_kp A B>;
