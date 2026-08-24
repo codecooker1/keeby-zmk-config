@@ -65,16 +65,16 @@
         raise_layer {
             display-name = "raise";
 // ------------------------------------------------------------------------------------------------------------
-// | BTCLR | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
-// |       | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
-// |       | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
-// |       | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
-//                |      |       |       |      |      |  |      |      |      |       |      |
+// | BTCLR  | BT1  | BT2  |  BT3  |  BT4  |  BT5 |                |      |      |       |      |       |       |
+// | STUDIO | INS  | PSCR | GUI   |       |      |                | PGUP |      |   ^   |      |       |       |
+// |        | ALT  | CTRL | SHIFT |       | CAPS |                | PGDN |   <- |   v   |  ->  |  DEL  | BKSPC |
+// |        | UNDO | CUT  | COPY  | PASTE |      |      |  |      |      |      |       |      |       |       |
+//                 |      |       |       |      |      |  |      |      |      |       |      |
             bindings = <
-&bt BT_CLR &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-&trans     &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
-&trans     &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK
-&trans     &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans
+&bt BT_CLR     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
+&studio_unlock &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
+&trans         &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK
+&trans         &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans
                         &trans       &trans       &trans       &trans        &trans
             >;
 
