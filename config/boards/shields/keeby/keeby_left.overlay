@@ -57,10 +57,6 @@
         status = "okay";
     };
 
-    &left_encoder {
-        status = "okay";
-    };
-
     sensors: sensors {
         compatible = "zmk,keymap-sensors";
         sensors = <&left_encoder>;
