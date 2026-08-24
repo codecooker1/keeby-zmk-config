@@ -35,7 +35,7 @@
 &kp GRAVE &kp N1 &kp N2   &kp N3   &kp N4    &kp N5
 &kp ESC   &kp Q  &kp W    &kp E    &kp R     &kp T
 &kp TAB   &kp A  &kp S    &kp D    &kp F     &kp G
-&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &kp C_MUTE
+&kp LSHFT &kp Z  &kp X    &kp C    &kp V     &kp B      &mo RAISE
                  &kp LGUI &kp LALT &kp LCTRL &mo LOWER  &kp RET
             >;
 
