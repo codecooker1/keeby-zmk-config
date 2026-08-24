@@ -52,7 +52,7 @@
 // |       |  =  |  -  |  +   |  {   |  }   |        |  |       |  [   |  ]    |  ;    |  :   |   \   |       |
 //               |     |      |      |      |        |  |       |      |       |       |      |
             bindings = <
-&trans    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5
+&studio_unlock    &kp F1    &kp F2    &kp F3      &kp F4    &kp F5
 &kp GRAVE &kp N1    &kp N2    &kp N3      &kp N4    &kp N5
 &trans    &kp EXCL  &kp AT    &kp HASH    &kp DLLR  &kp PRCNT
 &trans    &kp EQUAL &kp MINUS &kp PLUS    &kp LBRC  &kp RBRC   &mo RAISE
@@ -72,7 +72,7 @@
 //                 |      |       |       |      |      |  |      |      |      |       |      |
             bindings = <
 &bt BT_CLR     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-&studio_unlock &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
+&trans &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
 &trans         &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK
 &trans         &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans
                         &trans       &trans       &trans       &trans        &trans
