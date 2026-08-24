@@ -72,7 +72,7 @@
 //                 |      |       |       |      |      |  |      |      |      |       |      |
             bindings = <
 &bt BT_CLR     &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_SEL 4
-&trans &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
+&studio_unlock &kp INS      &kp PSCRN    &kp K_CMENU  &trans       &trans
 &trans         &kp LALT     &kp LCTRL    &kp LSHFT    &trans       &kp CLCK
 &trans         &kp K_UNDO   &kp K_CUT    &kp K_COPY   &kp K_PASTE  &trans        &trans
                         &trans       &trans       &trans       &trans        &trans

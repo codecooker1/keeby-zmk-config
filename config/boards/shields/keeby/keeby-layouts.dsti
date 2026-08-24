@@ -1,0 +1,49 @@
+/*
+https://zmk-physical-layout-converter.streamlit.app/?layout=H4sIAAAAAAACA4XQwQqCQBDG8btPMexZxJlZtXqNjtGhQ9FBEKygkH33Vl10ibXv5O74Z-zXkBGZ9vLpXs-HOdDgr35w7G7tdbkuhZ-cwoRoIPP2g7IoczKf6aQNufw3YBRIFLAkAo2CMvHeogVVFIhNBCuCEYIRghGCAYIRghFCEEIQQhBCAEIQQhBCEUIRQhFCAUIRQtOIOlI2NoloqlDYLUVUbDBQYYt9FPhjP356_n_6Nej_rKgj6k798T79-iosE7sum9OwTJVc2HWenuPNZe4LY72sB28EAAA%3D
+*/
+
+
+#include <physical_layouts.dtsi>
+
+/ {
+    physical_layout0: physical_layout_0 {
+        compatible = "zmk,physical-layout";
+        display-name = "Keeby";
+
+        kscan = <&kscan0>;
+        transform = <&matrix_transform0>;
+
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100    0   37       0     0     0>
+            , <&key_physical_attrs 100 100  100   37       0     0     0>
+            , <&key_physical_attrs 100 100  200   12       0     0     0>
+            , <&key_physical_attrs 100 100  300    0       0     0     0>
+            , <&key_physical_attrs 100 100  400   12       0     0     0>
+            , <&key_physical_attrs 100 100  500   24       0     0     0>
+            , <&key_physical_attrs 100 100    0  137       0     0     0>
+            , <&key_physical_attrs 100 100  100  137       0     0     0>
+            , <&key_physical_attrs 100 100  200  112       0     0     0>
+            , <&key_physical_attrs 100 100  300  100       0     0     0>
+            , <&key_physical_attrs 100 100  400  112       0     0     0>
+            , <&key_physical_attrs 100 100  500  124       0     0     0>
+            , <&key_physical_attrs 100 100    0  237       0     0     0>
+            , <&key_physical_attrs 100 100  100  237       0     0     0>
+            , <&key_physical_attrs 100 100  200  212       0     0     0>
+            , <&key_physical_attrs 100 100  300  200       0     0     0>
+            , <&key_physical_attrs 100 100  400  212       0     0     0>
+            , <&key_physical_attrs 100 100  500  224       0     0     0>
+            , <&key_physical_attrs 100 100    0  337       0     0     0>
+            , <&key_physical_attrs 100 100  100  337       0     0     0>
+            , <&key_physical_attrs 100 100  200  312       0     0     0>
+            , <&key_physical_attrs 100 100  300  300       0     0     0>
+            , <&key_physical_attrs 100 100  400  312       0     0     0>
+            , <&key_physical_attrs 100 100  500  324       0     0     0>
+            , <&key_physical_attrs 100 100  600  274       0     0     0>
+            , <&key_physical_attrs 100 100  175  437       0     0     0>
+            , <&key_physical_attrs 100 100  275  412       0     0     0>
+            , <&key_physical_attrs 100 100  375  412       0     0     0>
+            , <&key_physical_attrs 100 100  490  412    1200   490   412>
+            , <&key_physical_attrs 100 150  600  383    2400   600   433>
+            ;
+    };
+};
