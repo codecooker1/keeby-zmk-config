@@ -30,6 +30,8 @@ include:
       -DCONFIG_ZMK_RGB_UNDERGLOW=y
       -DCONFIG_WS2812_STRIP=y
       -DCONFIG_SPI=y
+      -DCONFIG_ZMK_DISPLAY=y
+      -DCONFIG_ZMK_WIDGET_WPM_STATUS=y
   - board: nice_nano_v2
     shield: settings_reset
   - board: nice_nano_v2
