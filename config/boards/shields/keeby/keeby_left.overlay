@@ -7,7 +7,6 @@
     chosen {
         zmk,kscan = &kscan;
         zmk,physical-layout = &physical_layout0;
-        zephyr,display = &oled;
     };
 
     encoder_button_kscan: encoder_button_kscan {
