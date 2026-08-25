@@ -32,6 +32,7 @@ include:
       -DCONFIG_SPI=y
       -DCONFIG_ZMK_DISPLAY=y
       -DCONFIG_ZMK_WIDGET_WPM_STATUS=y
+      -DCONFIG_ZMK_USB_LOGGING=y
   - board: nice_nano_v2
     shield: settings_reset
   - board: nice_nano_v2
