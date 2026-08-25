@@ -1,9 +1,9 @@
 #include <dt-bindings/led/led.h>
 
 
-/* &uart0 {
+&uart0 {
     status = "disabled";
-}; */
+};
 
 &pinctrl {
     spi3_default: spi3_default {

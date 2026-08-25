@@ -2,6 +2,9 @@
 #include <dt-bindings/led/led.h>
 #include "keeby-layouts.dsti"
 
+&spi1 {
+    status = "disabled";
+};
 
 / {
     chosen {
