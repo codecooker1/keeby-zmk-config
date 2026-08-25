@@ -72,5 +72,6 @@ zephyr_udc0: &usbd {
     chosen {
         zmk,underglow = &led_strip;
         zephyr,display = &oled;
+        zmk,display = &oled;
     };
 };
