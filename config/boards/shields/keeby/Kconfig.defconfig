@@ -1,14 +1,14 @@
-if SHIELD_SOFLE_LEFT
+if SHIELD_KEEBY_LEFT
 
 config ZMK_KEYBOARD_NAME
-    default "Sofle"
+    default "Keeby"
 
 config ZMK_SPLIT_ROLE_CENTRAL
     default y
 
 endif
 
-if SHIELD_SOFLE_LEFT || SHIELD_SOFLE_RIGHT
+if SHIELD_KEEBY_LEFT || SHIELD_KEEBY_RIGHT
 
 config ZMK_SPLIT
     default y
