@@ -10,7 +10,7 @@ https://zmk-physical-layout-converter.streamlit.app/?layout=H4sIAAAAAAACA4XQwQqC
         compatible = "zmk,physical-layout";
         display-name = "Keeby";
 
-        kscan = <&kscan0>;
+        kscan = <&kscan>;
         transform = <&default_transform>;
 
         keys  //                     w   h    x    y     rot    rx    ry
