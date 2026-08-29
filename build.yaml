@@ -44,6 +44,9 @@ include:
       -DCONFIG_ZMK_USB_LOGGING=n
       -DCONFIG_ZMK_DISPLAY=y
       -DCONFIG_ZMK_DISPLAY_BLANK_ON_IDLE=y
+      -DCONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y
+      -DCONFIG_SSD1306=y
+      -DCONFIG_ZMK_SPLIT=y
 
   - board: nice_nano_v2
     shield: settings_reset
