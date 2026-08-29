@@ -34,21 +34,6 @@ include:
   - board: nice_nano_v2
     shield: keeby_left
     snippet: studio-rpc-usb-uart
-    cmake-args: >
-      -DCONFIG_ZMK_STUDIO=y
-      -DCONFIG_EC11=y
-      -DCONFIG_EC11_TRIGGER_GLOBAL_THREAD=y
-      -DCONFIG_WS2812_STRIP=y
-      -DCONFIG_SPI=y
-      -DCONFIG_ZMK_RGB_UNDERGLOW=y
-      -DCONFIG_ZMK_USB_LOGGING=n
-      -DCONFIG_I2C=y
-      -DCONFIG_ZMK_DISPLAY=y
-      -DCONFIG_ZMK_DISPLAY_BLANK_ON_IDLE=y
-      -DCONFIG_ZMK_DISPLAY_WORK_QUEUE_DEDICATED=y
-      -DCONFIG_SSD1306=y
-      -DCONFIG_ZMK_SPLIT=y
-
   - board: nice_nano_v2
     shield: settings_reset
   - board: nice_nano_v2
