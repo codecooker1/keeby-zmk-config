@@ -23,8 +23,10 @@ include:
   - board: nice_nano_v2
     shield: keeby_left
     snippet: studio-rpc-usb-uart
+    cmake-args: -DEXTRA_CONF_FILE=config/boards/shields/keeby/keeby.conf
   - board: nice_nano_v2
     shield: keeby_right
+    cmake-args: -DEXTRA_CONF_FILE=config/boards/shields/keeby/keeby.conf
   - board: nice_nano_v2
     shield: settings_reset
   - board: nice_nano_v2
