@@ -16,17 +16,6 @@
 #     snippet: studio-rpc-usb-uart
 #     cmake-args: -DCONFIG_ZMK_STUDIO=y
 #     artifact-name: corne_left_with_studio
-#
-
-#       
-#       
-#       
-#       -DCONFIG_ZMK_WIDGET_BATTERY_STATUS=n
-#       -DCONFIG_ZMK_WIDGET_OUTPUT_STATUS=n
-#       -DCONFIG_ZMK_WIDGET_LAYER_STATUS=y
-#       -DCONFIG_ZMK_WIDGET_WPM_STATUS=n
-#       -DCONFIG_BOOT_DELAY=500
-#       -DCONFIG_ZMK_DISPLAY_DEDICATED_THREAD_STACK_SIZE=4096
 
 ---
 
