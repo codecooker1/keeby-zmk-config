@@ -24,17 +24,6 @@ config SSD1306
 config ZMK_DISPLAY_BLANK_ON_IDLE
     default n 
 
-config ZMK_WIDGET_BATTERY_STATUS
-    default y
-
-config ZMK_WIDGET_OUTPUT_STATUS
-    default y
-
-config ZMK_WIDGET_LAYER_STATUS
-    default y
-
-config ZMK_WIDGET_WPM_STATUS
-    default y
 
 endif # ZMK_DISPLAY
 
