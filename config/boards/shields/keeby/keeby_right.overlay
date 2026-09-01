@@ -1,0 +1,9 @@
+#include "keeby.dtsi"
+
+&default_transform {
+    col-offset = <6>;
+};
+
+&right_encoder {
+    status = "okay";
+};
