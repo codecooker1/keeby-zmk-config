@@ -41,16 +41,6 @@
     };
 };
 
-zephyr_udc0: &usbd {
-    status = "okay";
-};
-
-
-&left_encoder {
-    status = "okay";
-};
-
-
 / {
     chosen {
         zmk,underglow = &led_strip;
